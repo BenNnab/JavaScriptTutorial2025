@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Number Properties</title>
+</head>
+<body>
+    <form>
+        <h1>Check Number Properties (Min and Max Range)</h1>
+
+        <!-- Min and Max Inputs -->
+        <label for="minNumber">Min Number</label>
+        <input type="number" id="minNumber" value="1"><br>
+
+        <label for="maxNumber">Max Number</label>
+        <input type="number" id="maxNumber" value="100"><br>
+
+        <!-- Submit Button -->
+        <button type="button" onclick="checkNumbers()">Submit</button>
+
+        <!-- Results Section -->
+        <h2>Results:</h2>
+        <p id="primeNumbers">Prime Numbers: </p>
+        <p id="evenNumbers">Even Numbers: </p>
+        <p id="oddNumbers">Odd Numbers: </p>
+        <p id="perfectSquares">Perfect Squares: </p>
+        <p id="commonFactors">Common Factors: </p>
+        <p id="commonMultiples">Common Multiples: </p>
+    </form>
+
+    <script src="app.js"></script>
+</body>
+</html>
