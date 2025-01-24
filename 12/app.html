@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Fruit List with Formatting</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>My Favorite Fruits</h1>
+  </header>
+  <main>
+    <div class="input-container">
+      <input type="text" id="fruit-input" placeholder="Type your favorite fruit" />
+      <button id="add-button">Add Fruit</button>
+      <p id="error-message" class="error"></p>
+    </div>
+    <div class="format-container">
+      <label for="format-options">Display format:</label>
+      <select id="format-options">
+        <option value="original">Original</option>
+        <option value="uppercase">Uppercase</option>
+        <option value="lowercase">Lowercase</option>
+        <option value="capitalize">Capitalize</option>
+      </select>
+    </div>
+    <ul id="fruit-list"></ul>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
