@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Filter</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>Number Filter</h1>
+  </header>
+  <main>
+    <div class="input-container">
+      <input type="number" id="min-input" placeholder="Enter minimum value" />
+      <input type="number" id="max-input" placeholder="Enter maximum value" />
+      <button id="generate-button">Generate Numbers</button>
+      <p id="error-message" class="error"></p>
+    </div>
+    <div class="filter-container">
+      <label for="filter-options">Filter:</label>
+      <select id="filter-options">
+        <option value="all">All Numbers</option>
+        <option value="even">Even Numbers</option>
+        <option value="odd">Odd Numbers</option>
+        <option value="prime">Prime Numbers</option>
+        <option value="perfect-square">Perfect Squares</option>
+      </select>
+    </div>
+    <ul id="number-list"></ul>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
