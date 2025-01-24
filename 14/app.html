@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reduce Function Demo</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>Reduce Function Demo</h1>
+  </header>
+  <main>
+    <div class="input-container">
+      <label for="number-input">Enter numbers (comma separated):</label>
+      <input type="text" id="number-input" placeholder="e.g., 1, 2, 3, 4">
+      <button id="calculate-button">Calculate</button>
+      <p id="error-message" class="error"></p>
+    </div>
+    <div class="result-container">
+      <p><strong>Sum:</strong> <span id="sum-result">0</span></p>
+      <p><strong>Average (Mean):</strong> <span id="average-result">0</span></p>
+      <p><strong>Min:</strong> <span id="min-result">0</span></p>
+      <p><strong>Max:</strong> <span id="max-result">0</span></p>
+      <p><strong>Median:</strong> <span id="median-result">0</span></p>
+      <p><strong>Mode:</strong> <span id="mode-result">None</span></p>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
