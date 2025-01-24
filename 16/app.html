@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Objects Project</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>Car Objects Project</h1>
+  </header>
+  <main>
+    <div class="input-container">
+      <h2>Add a Car</h2>
+      <label for="make">Make:</label>
+      <input type="text" id="make" placeholder="Car Make">
+      
+      <label for="model">Model:</label>
+      <input type="text" id="model" placeholder="Car Model">
+      
+      <label for="year">Year:</label>
+      <input type="number" id="year" placeholder="Car Year">
+      
+      <label for="color">Color:</label>
+      <input type="text" id="color" placeholder="Car Color">
+      
+      <button id="add-car-button">Add Car</button>
+      <p id="error-message" class="error"></p>
+    </div>
+    <div class="car-list-container">
+      <h2>Car List</h2>
+      <ul id="car-list"></ul>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
