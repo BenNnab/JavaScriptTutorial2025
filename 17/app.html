@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>Student Management System</h1>
+  </header>
+  <main>
+    <div class="input-container">
+      <h2>Add a Student</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Student Name">
+      
+      <label for="grade">Grade:</label>
+      <input type="text" id="grade" placeholder="Student Grade">
+      
+      <label for="age">Age:</label>
+      <input type="number" id="age" placeholder="Student Age">
+      
+      <button id="add-student-button">Add Student</button>
+      <p id="error-message" class="error"></p>
+    </div>
+    <div class="student-list-container">
+      <h2>Student List</h2>
+      <ul id="student-list"></ul>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
