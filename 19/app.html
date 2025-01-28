@@ -35,6 +35,7 @@
       <button type="submit">Add Record</button>
     </form>
 
+
     <h2>Records</h2>
     <label for="sortBy">Sort By:</label>
     <select id="sortBy">
@@ -43,6 +44,19 @@
       <option value="grade">Grade</option>
       <option value="salary">Salary</option>
     </select>
+
+    <!-- Search and filter -->
+    <div>
+      <input type="text" id="searchName" placeholder="Search by name">
+      <select id="filterType">
+          <option value="">All Types</option>
+          <option value="student">Student</option>
+          <option value="employee">Employee</option>
+      </select>
+      <input type="number" id="minAge" placeholder="Min Age">
+      <input type="number" id="maxAge" placeholder="Max Age">
+      <button id="searchBtn">Search</button>
+  </div>
 
     <div id="recordList"></div>
   </div>
