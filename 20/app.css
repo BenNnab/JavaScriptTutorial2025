@@ -1,0 +1,45 @@
+/* Root variables for easy theme customization */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f4f4f4;
+    --text-color: #333;
+    --font-family: 'Arial', sans-serif;
+    --font-size: 3rem;
+    --background-color: #1a1a2e;
+    --clock-border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .clock-container {
+    text-align: center;
+    color: var(--secondary-color);
+  }
+  
+  .clock {
+    font-size: var(--font-size);
+    border: 4px solid var(--clock-border-color);
+    padding: 20px 40px;
+    border-radius: 12px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .date {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    opacity: 0.8;
+  }
+  

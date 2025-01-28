@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Records</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Records</h1>
+
+    <!-- Search and Filter -->
+    <div>
+      <input type="text" id="searchName" placeholder="Search by name" aria-label="Search by name">
+      <select id="filterType" aria-label="Filter by type">
+        <option value="">All Types</option>
+        <option value="student">Student</option>
+        <option value="employee">Employee</option>
+      </select>
+      <input type="number" id="minAge" placeholder="Min Age" aria-label="Minimum age">
+      <input type="number" id="maxAge" placeholder="Max Age" aria-label="Maximum age">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- Records Table -->
+    <table id="recordTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Type</th>
+          <th>Grade</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Records will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="records.js"></script>
+</body>
+</html>

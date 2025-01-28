@@ -9,56 +9,68 @@
 <body>
   <div class="container">
     <h1>People Manager</h1>
+
+    <!-- Add Person Form -->
     <form id="personForm">
-      <label for="type">Select Type:</label>
-      <select id="type" required>
+      <fieldset>
+        <legend>Add a New Person</legend>
+
+        <!-- Type Selection -->
+        <div>
+          <label for="type">Select Type:</label>
+          <select id="type" required aria-label="Select person type">
+            <option value="student">Student</option>
+            <option value="employee">Employee</option>
+          </select>
+        </div>
+
+        <!-- Name Input -->
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" required aria-label="Enter name">
+        </div>
+
+        <!-- Date of Birth Input -->
+        <div>
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" required aria-label="Enter date of birth">
+        </div>
+
+        <!-- Student Fields -->
+        <div id="studentFields">
+          <label for="grade">Grade:</label>
+          <input type="text" id="grade" aria-label="Enter grade">
+        </div>
+
+        <!-- Employee Fields -->
+        <div id="employeeFields" style="display: none;">
+          <label for="salary">Salary:</label>
+          <input type="number" id="salary" aria-label="Enter salary">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Add Record</button>
+      </fieldset>
+    </form>
+
+    <!-- Search and Filter -->
+    <div>
+      <h2>Search and Filter</h2>
+      <input type="text" id="searchName" placeholder="Search by name" aria-label="Search by name">
+      <select id="filterType" aria-label="Filter by type">
+        <option value="">All Types</option>
         <option value="student">Student</option>
         <option value="employee">Employee</option>
       </select>
-
-      <label for="name">Name:</label>
-      <input type="text" id="name" required>
-
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" required>
-
-      <div id="studentFields">
-        <label for="grade">Grade:</label>
-        <input type="text" id="grade">
-      </div>
-
-      <div id="employeeFields" style="display: none;">
-        <label for="salary">Salary:</label>
-        <input type="number" id="salary">
-      </div>
-
-      <button type="submit">Add Record</button>
-    </form>
-
-
-    <h2>Records</h2>
-    <label for="sortBy">Sort By:</label>
-    <select id="sortBy">
-      <option value="name">Name</option>
-      <option value="age">Age</option>
-      <option value="grade">Grade</option>
-      <option value="salary">Salary</option>
-    </select>
-
-    <!-- Search and filter -->
-    <div>
-      <input type="text" id="searchName" placeholder="Search by name">
-      <select id="filterType">
-          <option value="">All Types</option>
-          <option value="student">Student</option>
-          <option value="employee">Employee</option>
-      </select>
-      <input type="number" id="minAge" placeholder="Min Age">
-      <input type="number" id="maxAge" placeholder="Max Age">
+      <input type="number" id="minAge" placeholder="Min Age" aria-label="Minimum age">
+      <input type="number" id="maxAge" placeholder="Max Age" aria-label="Maximum age">
       <button id="searchBtn">Search</button>
-  </div>
+    </div>
 
-    <div id="recordList"></div>
+    <!-- Link to Records Page -->
+    <div>
+      <a href="records.html">View All Records</a>
+    </div>
   </div>
 
   <script src="app.js"></script>

@@ -1,63 +1,171 @@
+/* General Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+/* Forms */
+form {
+  margin-bottom: 30px;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+legend {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#studentFields,
+#employeeFields {
+  margin-top: 10px;
+}
+
+/* Links */
+a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Search and Filter */
+h2 {
+  color: #4CAF50;
+}
+
+input[placeholder] {
+  font-style: italic;
+}
+
+div input[type="text"],
+div input[type="number"] {
+  max-width: 300px;
+  margin-right: 10px;
+}
+
+select {
+  max-width: 200px;
+  margin-right: 10px;
+}
+
+#searchBtn {
+  max-width: 150px;
+  background-color: #007BFF;
+}
+
+#searchBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+td {
+  vertical-align: middle;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
   .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    padding: 10px;
   }
-  
-  h1, h2 {
-    text-align: center;
+
+  h1 {
+    font-size: 24px;
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 5px;
-  }
-  
-  input, select {
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
+
+  input,
+  select,
   button {
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
   }
-  
-  button:hover {
-    background-color: #218838;
+
+  table {
+    font-size: 14px;
   }
-  
-  #recordList {
-    margin-top: 20px;
-  }
-  
-  .record-item {
-    background: #f8f9fa;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
+}

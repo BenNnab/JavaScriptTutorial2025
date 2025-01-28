@@ -1,84 +1,54 @@
-// Function to add a record
-async function addRecord(type, name, dob, extra) {
-    const recordData = {
-      name,
-      dob,
-      type,
-      grade: type === "student" ? extra : undefined,
-      salary: type === "employee" ? extra : undefined,
-    };
-  
-    try {
-      const response = await fetch("http://localhost:5000/api/records", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recordData),
-      });
-  
-      if (!response.ok) {
-        throw new Error("Failed to save record");
-      }
-  
-      const data = await response.json();
-      console.log("Record saved:", data.record);
-      displayRecords(); // Refresh the display
-    } catch (error) {
-      console.error("Error saving record:", error);
-    }
-  }
-  
-  // Function to fetch and display records
-  async function displayRecords() {
-    try {
-      const response = await fetch("http://localhost:5000/api/records");
-      if (!response.ok) {
-        throw new Error("Failed to fetch records");
-      }
-  
-      const records = await response.json();
-      const recordList = document.getElementById("recordList");
-      recordList.innerHTML = ""; // Clear previous records
-  
-      records.forEach((record, index) => {
-        const recordItem = document.createElement("div");
-        recordItem.className = "record-item";
-  
-        // Check if today is the user's birthday
-        const today = new Date();
-        const birthDate = new Date(record.dob);
-        if (today.getMonth() === birthDate.getMonth() && today.getDate() === birthDate.getDate()) {
-          const birthdayMessage = document.createElement("p");
-          birthdayMessage.textContent = `🎉 Happy Birthday, ${record.name}! 🎉`;
-          birthdayMessage.style.color = "green";
-          birthdayMessage.style.fontWeight = "bold";
-          recordItem.appendChild(birthdayMessage);
-        }
-  
-        // Display the record details
-        const recordDetails = document.createElement("p");
-        recordDetails.textContent = `Record ${index + 1}: Name: ${record.name}, Age: ${calculateAge(record.dob)}, ${
-          record.type === "student" ? `Grade: ${record.grade}` : `Salary: $${record.salary}`
-        }`;
-        recordItem.appendChild(recordDetails);
-  
-        // Append the record item to the list
-        recordList.appendChild(recordItem);
-      });
-    } catch (error) {
-      console.error("Error fetching records:", error);
-    }
-  }
-  
-  // Helper function to calculate age
-  function calculateAge(dob) {
-    const today = new Date();
-    const birthDate = new Date(dob);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
+const compression = require("compression");
+const rateLimit = require("express-rate-limit");
+const morgan = require("morgan");
+const connectDB = require("./config/db");
+const errorHandler = require("./middlewares/errorHandler");
+const recordRoutes = require("./routes/recordRoutes");
+
+const app = express();
+const port = process.env.PORT || 5000;
+
+// Middleware
+app.use(morgan("dev"));
+app.use(express.json());
+app.use((req, res, next) => {
+  console.log("CORS Origin:", req.headers.origin);
+  next();
+});
+app.use(
+  cors({
+    origin: ["http://127.0.0.1:5500", "http://localhost:5500"], // Allow multiple origins
+    credentials: true, // Allow credentials (if needed)
+  })
+);
+app.options("*", cors()); // Handle preflight requests
+app.use((req, res, next) => {
+  res.on("finish", () => {
+    console.log("Response Headers:", res.getHeaders());
+  });
+  next();
+});
+app.use(helmet());
+app.use(compression());
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+
+// Database connection
+connectDB();
+
+// Routes
+app.use("/api/records", recordRoutes);
+
+// Test CORS route
+app.get("/test-cors", (req, res) => {
+  res.json({ message: "CORS is working!" });
+});
+
+// Error handling middleware
+app.use(errorHandler);
+
+// Start server
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
