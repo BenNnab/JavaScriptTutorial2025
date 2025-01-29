@@ -1,2 +1,28 @@
-node_modules/
+# Node.js dependencies
+/node_modules/
+
+# Environment variables file (keep secrets like DB credentials)
 .env
+
+# Logs
+*.log
+
+# npm package-lock files (optional, but good practice)
+package-lock.json
+
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Build directories (if any)
+dist/
+build/
+
+# Temporary files or folders
+*.tmp
+*.swp
