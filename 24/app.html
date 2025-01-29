@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Element Selectors</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <h1>DOM Element Selector Demo</h1>
+    
+    <ul id="itemList">
+        <li class="item" id="item1">Item 1</li>
+        <li class="item" id="item2">Item 2</li>
+        <li class="item" id="item3">Item 3</li>
+        <li class="item" id="item4">Item 4</li>
+    </ul>
+    
+    <div id="buttons">
+        <button onclick="selectById()">Select by ID (Item 2)</button>
+        <button onclick="selectByTagName()">Select by Tag Name (all <li>)</button>
+        <button onclick="selectByClassName()">Select by Class Name (all .item)</button>
+        <button onclick="selectByQuerySelector()">Select by Query Selector (Item 3)</button>
+        <button onclick="selectByQuerySelectorAll()">Select by Query Selector All</button>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
