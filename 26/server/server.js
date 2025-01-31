@@ -6,10 +6,13 @@ const dotenv = require("dotenv");
 const app = express();
 dotenv.config();
 
+
+const authRoutes = require("./routes/authRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 
 const PORT = process.env.PORT || 5000;
 require("dotenv").config();
+
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <button id="logoutButton" type="button">Logout</button>
+  </header>
+
+  <div class="container">
+    <h1>Create a New Task</h1>
+
+    <!-- Task Form -->
+    <form id="taskForm">
+      
+      <!-- Task Title -->
+      <div class="form-group">
+        <label for="title">Task Title:</label>
+        <input type="text" id="title" placeholder="Enter task title" required autocomplete="off">
+      </div>
+
+      <!-- Task Description -->
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" placeholder="Enter task description" required></textarea>
+      </div>
+
+      <!-- Task Category -->
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+
+      <!-- Task Status -->
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" required>
+          <option value="Pending">Pending</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Done">Done</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit">Add Task</button>
+      
+    </form>
+
+    <!-- View All Tasks Link -->
+    <p><a href="tasks.html">View All Tasks</a></p>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+ 
+
+  
+  

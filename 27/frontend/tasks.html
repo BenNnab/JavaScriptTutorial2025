@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task List</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <button id="logoutButton">Logout</button>
+  </header>
+
+  <div class="container">
+    <h1>Your Tasks</h1>
+
+    <!-- Back to Dashboard Link -->
+    <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+    <!-- Filter Tasks Form -->
+    <form id="filterForm">
+      <label for="filterCategory">Filter by Category:</label>
+      <select id="filterCategory">
+        <option value="all">All</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+      <button type="button" onclick="filterTasks()">Filter</button>
+    </form>
+
+    <!-- Task List -->
+     <div class="card-list" id="taskList">
+       
+     </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
