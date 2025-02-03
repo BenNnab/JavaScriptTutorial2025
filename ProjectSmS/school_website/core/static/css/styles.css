@@ -1,0 +1,28 @@
+body {
+    transition: background 0.3s, color 0.3s;
+}
+
+.light-mode {
+    background: #fff;
+    color: #333;
+}
+
+.dark-mode {
+    background: #222;
+    color: #f4f4f4;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #0073e6;
+    color: white;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
