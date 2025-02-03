@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+<p>Total News: {{ news_count }}</p>
+<p>Total Events: {{ event_count }}</p>
+<p>Total Teachers: {{ teachers_count }}</p>
+<p>Total Students: {{ students_count }}</p>
+<p><a href="{% url 'manage_news' %}">Manage News</a></p>
+<p><a href="{% url 'manage_events' %}">Manage Events</a></p>
+{% endblock %}

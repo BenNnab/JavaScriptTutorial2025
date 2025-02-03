@@ -3,6 +3,18 @@
 {% block title %}Home - School Website{% endblock %}
 
 {% block content %}
-    <h1>Welcome to Our School</h1>
-    <p>Empowering students with knowledge and skills.</p>
+    <h1>Latest News</h1>
+    {% for news in news_list %}
+        <h3>{{ news.title }}</h3>
+        <p>{{ news.content }}</p>
+        <p><small>Posted by {{ news.posted_by }} on {{ news.date_posted }}</small></p>
+    {% endfor %}
+
+    <h1>Upcoming Events</h1>
+    {% for event in events_list %}
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description }}</p>
+        <p>Date: {{ event.date }} | Time: {{ event.time }}</p>
+        <p>Location: {{ event.location }}</p>
+    {% endfor %}
 {% endblock %}

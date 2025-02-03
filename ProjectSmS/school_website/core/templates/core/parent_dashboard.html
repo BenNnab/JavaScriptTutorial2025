@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Parent Dashboard</h1>
+<p>View student performance and school updates here.</p>
+{% for child_data in children_data %}
+    <h2>{{ child_data.child.user.get_full_name }}</h2>
+
+    <h3>Classes</h3>
+    <ul>
+        {% for class in child_data.classes %}
+        <li>{{ class.name }} (Teacher: {{ class.teacher.get_full_name }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Grades</h3>
+    <ul>
+        {% for grade in child_data.grades %}
+        <li>{{ grade.subject }}: {{ grade.grade }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+{% endblock %}

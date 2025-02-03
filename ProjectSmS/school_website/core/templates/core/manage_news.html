@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Manage News</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post News</button>
+</form>
+
+<h2>News List</h2>
+<ul>
+    {% for news in news_list %}
+    <li>
+        <strong>{{ news.title }}</strong> - {{ news.posted_by }} ({{ news.posted_on }})
+        <p>{{ news.content }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
