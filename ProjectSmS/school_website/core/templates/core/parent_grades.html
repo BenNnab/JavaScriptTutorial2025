@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Child's Grades{% endblock %}
+
+{% block content %}
+    <h1>Your Child's Grades</h1>
+    <table border="1">
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Grade</th>
+            <th>Teacher</th>
+            <th>Date Assigned</th>
+        </tr>
+        {% for grade in grades %}
+            <tr>
+                <td>{{ grade.student }}</td>
+                <td>{{ grade.subject }}</td>
+                <td>{{ grade.score }}</td>
+                <td>{{ grade.grade }}</td>
+                <td>{{ grade.teacher }}</td>
+                <td>{{ grade.date_assigned }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

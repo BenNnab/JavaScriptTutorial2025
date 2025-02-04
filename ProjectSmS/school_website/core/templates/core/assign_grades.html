@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Assign Grades{% endblock %}
+
+{% block content %}
+    <h1>Assign Grades</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Grade</button>
+    </form>
+
+    <h2>Assigned Grades</h2>
+    <table border="1">
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Grade</th>
+            <th>Date Assigned</th>
+        </tr>
+        {% for grade in grades %}
+            <tr>
+                <td>{{ grade.student }}</td>
+                <td>{{ grade.subject }}</td>
+                <td>{{ grade.score }}</td>
+                <td>{{ grade.grade }}</td>
+                <td>{{ grade.date_assigned }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

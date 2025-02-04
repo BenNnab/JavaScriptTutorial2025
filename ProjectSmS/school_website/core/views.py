@@ -209,3 +209,36 @@ def parent_dashboard(request):
         })
 
     return render(request, 'core/parent_dashboard.html', {'children_data': children_data})
+
+from .models import Grade
+from .forms import GradeForm
+
+@login_required
+@user_passes_test(lambda user: user.role in ['admin', 'teacher'])
+def assign_grades(request):
+    if request.method == 'POST':
+        form = GradeForm(request.POST)
+        if form.is_valid():
+            grade = form.save(commit=False)
+            grade.teacher = request.user
+            grade.save()
+            return redirect('assign_grades')
+    else:
+        form = GradeForm()
+
+    grades = Grade.objects.filter(teacher=request.user)
+    return render(request, 'core/assign_grades.html', {'form': form, 'grades': grades})
+
+@login_required
+@user_passes_test(lambda user: user.role == 'student')
+def student_grades(request):
+    grades = Grade.objects.filter(student=request.user)
+    return render(request, 'core/student_grades.html', {'grades': grades})
+
+@login_required
+@user_passes_test(lambda user: user.role == 'parent')
+def parent_view_grades(request):
+    children = request.user.children.all()  # Assuming a parent-child relationship exists
+    grades = Grade.objects.filter(student__in=children)
+    return render(request, 'core/parent_grades.html', {'grades': grades})
+

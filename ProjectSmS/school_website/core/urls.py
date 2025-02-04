@@ -20,4 +20,8 @@ urlpatterns = [
  # Dashboard Routes for managing Contents
     path('manage-news/', views.manage_news, name='manage_news'),
     path('manage-events/', views.manage_events, name='manage_events'),
+# Grades  URLS Management
+    path('assign-grades/', views.assign_grades, name='assign_grades'),
+    path('student-grades/', views.student_grades, name='student_grades'),
+    path('parent-grades/', views.parent_view_grades, name='parent_grades'),
 ]

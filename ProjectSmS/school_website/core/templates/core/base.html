@@ -19,12 +19,16 @@
             
             {% if user.role == 'admin' %}
                 <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+                <a href="{% url 'assign_grades' %}">Assign Grades</a>
             {% elif user.role == 'teacher' %}
                 <a href="{% url 'teacher_dashboard' %}">Dashboard</a>
+                <a href="{% url 'assign_grades' %}">Assign Grades</a>
             {% elif user.role == 'student' %}
                 <a href="{% url 'student_dashboard' %}">Dashboard</a>
+                <a href="{% url 'student_grades' %}">View Grades</a>
             {% elif user.role == 'parent' %}
                 <a href="{% url 'parent_dashboard' %}">Dashboard</a>
+                <a href="{% url 'parent_grades' %}">View Child’s Grades</a>
             {% endif %}
             
             <a href="{% url 'logout' %}">Logout</a>
