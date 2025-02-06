@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.conf import settings
 
 # Custom User Model
@@ -16,88 +16,34 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-# News Model
+# CMS Models
 class News(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
-    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='news_posts')
+    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
-# Event Model
 class Event(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    date = models.DateField()
-    time = models.TimeField()
+    date = models.DateField(help_text="Format: YYYY-MM-DD (e.g., 2025-02-06)")
+    time = models.TimeField(help_text="Format: HH:MM:SS (24-hour format, e.g., 14:30:00)")
     location = models.CharField(max_length=255)
-    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, 
-        null=True, 
-        blank=True, related_name='events_posted')
 
     def __str__(self):
         return self.title
-
-# Subject Model
-class Subject(models.Model):
-    name = models.CharField(max_length=100)
-    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, limit_choices_to={'role': 'teacher'}, related_name='subjects_taught')
-
-    def __str__(self):
-        return self.name
-
-# Class Modelfrom django.conf import settings
-from django.db import models
-
-class Class(models.Model):
-    name = models.CharField(max_length=50)
-    subjects = models.ManyToManyField('Subject', related_name='classes')
-    students = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        limit_choices_to={'role': 'student'},
-        related_name='classes_enrolled'
-    )
-    teacher = models.ForeignKey(
-        settings.AUTH_USER_MODEL,  # Use settings.AUTH_USER_MODEL to avoid circular imports
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        default=None,
-        related_name="classes"
-    )
-
-    def __str__(self):
-        return self.name
-
-    
-
-
-# Parent Model
-class Parent(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='parent_profile')
-    children = models.ManyToManyField('Student', related_name='parents')
-
-    def __str__(self):
-        return self.user.get_full_name()
-
-# Student Model
-class Student(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='student_profile')
-    classes = models.ManyToManyField(Class, related_name='students_enrolled')
-
-    def __str__(self):
-        return self.user.get_full_name()
 
 # Grade Model
 class Grade(models.Model):
     student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, limit_choices_to={'role': 'student'})
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    score = models.FloatField(null=True, blank=True)
+    subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
+    score = models.FloatField()
     grade = models.CharField(max_length=2, blank=True)
-    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='teacher_grades')
-    date_assigned = models.DateTimeField(auto_now_add=True,null=True, blank=True)
+    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='teacher_grades')
+    date_assigned = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if self.score >= 90:
@@ -114,3 +60,48 @@ class Grade(models.Model):
 
     def __str__(self):
         return f"{self.student} - {self.subject}: {self.grade}"
+
+# Parent and Student Models
+class Parent(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='parent_profile')
+    children = models.ManyToManyField('Student', related_name='parent_set', blank=True)  # Made optional with `blank=True`
+
+    def __str__(self):
+        return self.user.get_full_name()
+
+class Student(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='student_profile')
+    classes = models.ManyToManyField('Class', related_name='students_enrolled')
+    parents = models.ManyToManyField(Parent, related_name='student_set', blank=True)  # Made optional with `blank=True`
+
+    def __str__(self):
+        return self.user.get_full_name()
+
+# Class and Subject Models
+class Class(models.Model):
+    name = models.CharField(max_length=50)
+    teacher = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        limit_choices_to={'role': 'teacher'},
+        related_name='classes'
+    )
+    subjects = models.ManyToManyField('Subject', related_name='class_subjects')
+    students = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        limit_choices_to={'role': 'student'},
+        related_name='classes_enrolled'
+    )
+
+    def __str__(self):
+        return self.name
+
+class Subject(models.Model):
+    name = models.CharField(max_length=100)
+    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, limit_choices_to={'role': 'teacher'})
+    classes = models.ManyToManyField(Class, related_name='subject_classes')
+
+    def __str__(self):
+        return self.name

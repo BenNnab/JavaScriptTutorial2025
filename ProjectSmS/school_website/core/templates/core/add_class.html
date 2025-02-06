@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Add Class{% endblock %}
+
+{% block content %}
+    <h1>Add Class</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Class</button>
+    </form>
+{% endblock %}

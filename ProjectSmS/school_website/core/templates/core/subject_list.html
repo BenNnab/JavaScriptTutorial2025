@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h1>Subject List</h1>
+<a href="{% url 'add_subject' %}">Add New Subject</a>
+<ul>
+    {% for subject in subjects %}
+        <li>
+            {{ subject.name }} (Taught by: {{ subject.teacher.username }})
+            <a href="{% url 'edit_subject' subject.id %}">Edit</a>
+            <a href="{% url 'delete_subject' subject.id %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,10 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import User
-from .models import News, Event
-from .models import Grade 
+from .models import User,News, Event, Grade
 
 
+#Create Forms for Registration & Login
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
@@ -12,7 +11,7 @@ class RegisterForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     pass
-
+#Create Forms for CMS Management
 
 class NewsForm(forms.ModelForm):
     class Meta:
@@ -20,12 +19,10 @@ class NewsForm(forms.ModelForm):
         fields = ['title', 'content']
 
 class EventForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date'}))
-    time = forms.TimeField(widget=forms.TimeInput(format='%H:%M', attrs={'type': 'time'}))
     class Meta:
         model = Event
         fields = ['title', 'description', 'date', 'time', 'location']
-
+#Create a Form for Teachers to Assign Grades
 class GradeForm(forms.ModelForm):
     class Meta:
         model = Grade

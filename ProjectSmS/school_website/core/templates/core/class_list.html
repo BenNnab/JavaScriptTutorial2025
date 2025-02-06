@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+    <h1>Class List</h1>
+    <a href="{% url 'add_class' %}">Add New Class</a>
+    <ul>
+        {% for class in classes %}
+            <li>
+                {{ class.name }} 
+                <a href="{% url 'edit_class' class.id %}">Edit</a> |
+                <a href="{% url 'delete_class' class.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

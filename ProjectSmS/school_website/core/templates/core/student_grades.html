@@ -4,22 +4,37 @@
 
 {% block content %}
     <h1>Your Grades</h1>
-    <table border="1">
-        <tr>
-            <th>Subject</th>
-            <th>Score</th>
-            <th>Grade</th>
-            <th>Teacher</th>
-            <th>Date Assigned</th>
-        </tr>
-        {% for grade in grades %}
-            <tr>
-                <td>{{ grade.subject }}</td>
-                <td>{{ grade.score }}</td>
-                <td>{{ grade.grade }}</td>
-                <td>{{ grade.teacher }}</td>
-                <td>{{ grade.date_assigned }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    
+    <canvas id="gradeChart" width="400" height="200"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("{% url 'student_grade_chart' %}")
+                .then(response => response.json())
+                .then(data => {
+                    const ctx = document.getElementById('gradeChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.subjects,
+                            datasets: [{
+                                label: 'Scores',
+                                data: data.scores,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100
+                                }
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
 {% endblock %}

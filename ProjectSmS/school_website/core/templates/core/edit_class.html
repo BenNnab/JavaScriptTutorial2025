@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edit Class{% endblock %}
+
+{% block content %}
+    <h1>Edit Class: {{ class.name }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Class</button>
+    </form>
+{% endblock %}
