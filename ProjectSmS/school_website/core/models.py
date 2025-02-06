@@ -105,3 +105,16 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.name
+#Create the Attendance Model
+class Attendance(models.Model):
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, limit_choices_to={'role': 'student'})
+    date = models.DateField(auto_now_add=True)
+    status = models.CharField(
+        max_length=10,
+        choices=[('Present', 'Present'), ('Absent', 'Absent'), ('Late', 'Late')],
+        default='Present'
+    )
+    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='attendance_teacher')
+
+    def __str__(self):
+        return f"{self.student} - {self.date}: {self.status}"

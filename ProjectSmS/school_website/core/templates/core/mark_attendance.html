@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+    <h1>Mark Attendance</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Attendance</button>
+    </form>
+
+    <h2>Attendance Records</h2>
+    <table border="1">
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% for record in attendance_records %}
+            <tr>
+                <td>{{ record.student }}</td>
+                <td>{{ record.date }}</td>
+                <td>{{ record.status }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

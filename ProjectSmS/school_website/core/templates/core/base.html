@@ -31,12 +31,15 @@
                         {% elif role == "teacher" %}
                             <a href="{% url 'teacher_dashboard' %}">Teacher Dashboard</a>
                             <a href="{% url 'assign_grades' %}">Assign Grades</a>
+                            <a href="{% url 'mark_attendance' %}">Mark Attendance</a>
                         {% elif role == "student" %}
                             <a href="{% url 'student_dashboard' %}">My Dashboard</a>
                             <a href="{% url 'student_grades' %}">My Grades</a>
+                            <a href="{% url 'student_attendance' %}">View Attendance</a>
                         {% elif role == "parent" %}
                             <a href="{% url 'parent_dashboard' %}">Parent Dashboard</a>
                             <a href="{% url 'parent_grades' %}">Child’s Grades</a>
+                            <a href="{% url 'parent_attendance' %}">View Child’s Attendance</a>
                         {% endif %}
                     {% endwith %}
                 </div>

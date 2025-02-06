@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Event, Subject, Class, User, Grade, Parent, Student
+from .models import News, Event, Subject, Class, User, Grade, Parent, Student, Attendance
 
 @admin.register(Grade)
 class GradeAdmin(admin.ModelAdmin):
@@ -52,3 +52,7 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ['user']
     search_fields = ['user__username']
     filter_horizontal = ['classes', 'parents']
+
+@admin.register(Attendance)
+class AttendanceAdmin(admin.ModelAdmin):
+    list_display = ['student', 'date', 'status', 'teacher']

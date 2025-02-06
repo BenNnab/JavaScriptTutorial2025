@@ -1,12 +1,14 @@
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from .forms import RegisterForm, LoginForm, NewsForm, EventForm, GradeForm
+from .forms import RegisterForm, LoginForm, NewsForm, EventForm, GradeForm, AttendanceForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import News, Event, Subject, Class, Grade, AbstractUser, User, Parent, Student
+from .models import News, Event, Subject, Class, Grade, AbstractUser, User, Parent, Student, Attendance
 from django.contrib import messages
 from django.db import IntegrityError
 from django.http import JsonResponse
+
+
 
 
 
@@ -199,3 +201,46 @@ def student_grade_chart(request):
     scores = [grade.score for grade in grades]
     
     return JsonResponse({'subjects': subjects, 'scores': scores})
+
+#Create Views for Attendance Management
+@login_required
+@user_passes_test(lambda user: user.role == 'teacher')
+def mark_attendance(request):
+    if request.method == 'POST':
+        form = AttendanceForm(request.POST)
+        if form.is_valid():
+            attendance = form.save(commit=False)
+            attendance.teacher = request.user
+            attendance.save()
+            return redirect('mark_attendance')
+    else:
+        form = AttendanceForm()
+
+    attendance_records = Attendance.objects.filter(teacher=request.user)
+    return render(request, 'core/mark_attendance.html', {'form': form, 'attendance_records': attendance_records})
+
+@login_required
+@user_passes_test(lambda user: user.role == 'student')
+def student_attendance(request):
+    attendance_records = Attendance.objects.filter(student=request.user)
+    return render(request, 'core/student_attendance.html', {'attendance_records': attendance_records})
+
+@login_required
+@user_passes_test(lambda user: user.role == 'parent')
+def parent_attendance(request):
+    children = request.user.children.all()  # Assuming a parent-child relationship exists
+    attendance_records = Attendance.objects.filter(student__in=children)
+    return render(request, 'core/parent_attendance.html', {'attendance_records': attendance_records})
+
+@login_required
+@user_passes_test(lambda user: user.role == 'student')
+def student_attendance_chart(request):
+    attendance_records = Attendance.objects.filter(student=request.user)
+    present_count = attendance_records.filter(status='Present').count()
+    absent_count = attendance_records.filter(status='Absent').count()
+    late_count = attendance_records.filter(status='Late').count()
+
+    return JsonResponse({
+        'labels': ['Present', 'Absent', 'Late'],
+        'data': [present_count, absent_count, late_count]
+    })

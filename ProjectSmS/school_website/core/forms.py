@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import User,News, Event, Grade
+from .models import User,News, Event, Grade, Attendance
 
 
 #Create Forms for Registration & Login
@@ -27,3 +27,8 @@ class GradeForm(forms.ModelForm):
     class Meta:
         model = Grade
         fields = ['student', 'subject', 'score']
+#Create a Form for Teachers to Mark Attendance
+class AttendanceForm(forms.ModelForm):
+    class Meta:
+        model = Attendance
+        fields = ['student', 'status']

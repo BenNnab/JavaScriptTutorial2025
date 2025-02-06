@@ -28,4 +28,10 @@ urlpatterns = [
     path('parent-grades/', views.parent_view_grades, name='parent_grades'),
 #Add URL for the Chart API
     path('student-grade-chart/', views.student_grade_chart, name='student_grade_chart'),
+    
+    #Add URLs for Attendance Management
+    path('mark-attendance/', views.mark_attendance, name='mark_attendance'),
+    path('student-attendance/', views.student_attendance, name='student_attendance'),
+    path('parent-attendance/', views.parent_attendance, name='parent_attendance'),
+    path('student-attendance-chart/', views.student_attendance_chart, name='student_attendance_chart'),
 ]
