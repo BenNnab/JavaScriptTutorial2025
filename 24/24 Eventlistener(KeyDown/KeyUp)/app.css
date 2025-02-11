@@ -1,23 +1,27 @@
-
+body{
+    margin: 0;
+}
 .highlight {
     background-color: yellow;
     font-weight: bold;
 }
 
 #myBox {
-    width: 500px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #000;
-    font-size: 5rem;
+    font-size: 7.5rem;
     cursor: pointer;
     margin-top: 10px;
     border-radius: 10px;
+    background-color: lightblue;
+    position: relative;
 }
 #myButton{
-    font-size: 3rem;
+    font-size: 1rem;
     margin-top: 10px;
 }

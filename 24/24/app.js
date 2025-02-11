@@ -35,16 +35,16 @@ actionButton.addEventListener('click', () => {
 const myBox =document.getElementById("myBox");
 const myButton = document.getElementById("myButton");
 
-myBox.addEventListener("click", Event =>{
-    Event.target.style.backgroundColor = "tomato";
-    Event.target.textContent = " OUCH!🤣";
+myButton.addEventListener("click", Event =>{
+    myBox.style.backgroundColor = "tomato";
+    myBox.textContent = " OUCH!🤣";
 });
 
-myBox.addEventListener("mouseover", Event =>{
-    Event.target.style.backgroundColor = "yellow";
-    Event.target.textContent = " Don't do it!😯";
+myButton.addEventListener("mouseover", Event =>{
+    myBox.style.backgroundColor = "yellow";
+    myBox.textContent = " Don't do it!😯";
 });
-myBox.addEventListener("mouseout", Event =>{
-    Event.target.style.backgroundColor = "lightgreen";
-    Event.target.textContent = " Click me 😍";
+myButton.addEventListener("mouseout", Event =>{
+    myBox.style.backgroundColor = "lightgreen";
+    myBox.textContent = " Click me 😍";
 });

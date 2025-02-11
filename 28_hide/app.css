@@ -1,0 +1,10 @@
+#myButton{
+    font-size: 2rem;
+    border: 1px solid red;
+    border-radius: 30px;
+    width: 150px;
+    background-color: beige;
+    justify-items: center;
+    font-weight: bold;
+    
+}

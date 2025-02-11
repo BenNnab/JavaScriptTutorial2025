@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "age": 28,
+        "email": "john.doe@example.com",
+        "country": "USA"
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "age": 34,
+        "email": "jane.smith@example.com",
+        "country": "Canada"
+    },
+    {
+        "id": 3,
+        "name": "Alice Johnson",
+        "age": 22,
+        "email": "alice.johnson@example.com",
+        "country": "UK"
+    },
+    {
+        "id": 4,
+        "name": "Bob Brown",
+        "age": 45,
+        "email": "bob.brown@example.com",
+        "country": "Australia"
+    }
+]
