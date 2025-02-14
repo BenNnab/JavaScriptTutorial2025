@@ -1,0 +1,202 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+header {
+    background-color: #08769B;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+}
+
+header button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+header button:hover {
+    opacity: 0.8;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2rem;
+    border: solid 5px green;
+    font-weight: 700;
+    margin: 2rem;
+    border-radius: 10px;
+    /* width: fit-content; */
+    align-items: center;
+}
+
+/* Authentication Section */
+#authSection {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+#authSection h2 {
+    margin-top: 0;
+}
+
+#authSection input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#authSection button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#authSection button:hover {
+    background-color: #555;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+}
+
+/* Game Section */
+#gameSection {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 600px;
+    border: solid 2px darkorange;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.buttons button {
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #1095c1;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #59cdf3;
+}
+
+.game-stats {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-controls button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.game-controls button:hover {
+    background-color: #555;
+}
+
+/* Leaderboard Section */
+#leaderboardSection {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+}
+
+#leaderboardSection h2 {
+    margin-top: 0;
+}
+
+#leaderboard {
+    list-style-type: none;
+    padding: 0;
+}
+
+#leaderboard li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+footer {
+    background-color: #08769B;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    width: 100%;
+}
+
+/* Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.player-choice, .computer-choice {
+    display: inline-block;
+    font-size: 2rem;
+    animation: shake 0.5s ease-in-out;
+}

@@ -1,0 +1,32 @@
+# Node.js dependencies
+/myvenv/
+node_modules
+
+# Environment variables file (keep secrets like DB credentials)
+myvenv
+
+# Logs
+*.log
+
+# npm package-lock files (optional, but good practice)
+package-lock.json
+algorithms.json
+package.json
+vite.config.js
+
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Build directories (if any)
+dist/
+build/
+
+# Temporary files or folders
+*.tmp
+*.swp

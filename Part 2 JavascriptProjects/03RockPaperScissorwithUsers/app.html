@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/user2.jpg">
+    <link rel="stylesheet" href="app.css">
+    <title>Rock-Paper-Scissors Game</title>
+</head>
+<body>
+    <div id="authSection">
+        <h2>Register</h2>
+        <input type="text" id="registerUsername" placeholder="Username">
+        <input type="password" id="registerPassword" placeholder="Password">
+        <button id="registerButton">Register</button>
+        <p id="registerError" class="error"></p>
+
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button id="loginButton">Login</button>
+        <p id="loginError" class="error"></p>
+    </div>
+
+    <div id="gameSection">
+        <h2>Rock-Paper-Scissors</h2>
+        <div class="buttons">
+            <button>Rock 👊 </button>
+            <button>Paper  ✋ </button>
+            <button>Scissors ✌</button>
+        </div>
+        <p id="playerDisplay"></p>
+        <p id="computerDisplay"></p>
+        <p id="resultDisplay"></p>
+        <p>Player Score: <span id="playerScoreDisplay">0</span></p>
+        <p>Computer Score: <span id="computerScoreDisplay">0</span></p>
+        <p>Total Games Played: <span id="totalGamesDisplay">0</span></p> <!-- New element -->
+        <p>Total Ties: <span id="totalTiesDisplay">0</span></p> <!-- New element -->
+        <button id="resetButton">Reset Game</button>
+        <button id="logoutButton">Logout</button>
+    </div>
+
+    <div id="leaderboardSection">
+        <h2>Leaderboard</h2>
+        <ul id="leaderboard"></ul>
+    </div>
+
+    <script type="module" src="app1.js"></script>
+</body>
+</html>

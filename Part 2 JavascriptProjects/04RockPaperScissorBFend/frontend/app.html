@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/user2.jpg">
+    <link rel="stylesheet" href="app.css">
+    <title>Rock-Paper-Scissors Game</title>
+</head>
+<body>
+    <header>
+        <h1>Rock-Paper-Scissors</h1>
+        <button id="logoutButton">Logout</button>
+        <button id="themeToggle">🌙 Dark Mode</button>
+    </header>
+
+    <main>
+        <!-- Game Section -->
+        <section id="gameSection">
+            <div class="buttons">
+                <button>Rock 👊</button>
+                <button>Paper ✋</button>
+                <button>Scissors ✌</button>
+            </div>
+            <div class="game-stats">
+                <p id="playerDisplay"></p>
+                <p id="computerDisplay"></p>
+                <p id="resultDisplay"></p>
+                <p>Player Score: <span id="playerScoreDisplay">0</span></p>
+                <p>Computer Score: <span id="computerScoreDisplay">0</span></p>
+                <p>Total Games Played: <span id="totalGamesDisplay">0</span></p>
+                <p>Total Ties: <span id="totalTiesDisplay">0</span></p>
+            </div>
+            <div class="game-controls">
+                <button id="resetButton">Reset Game</button>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <aside id="leaderboardSection">
+            <h2>Leaderboard</h2>
+            <ul id="leaderboard"></ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Rock-Paper-Scissors Game</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
