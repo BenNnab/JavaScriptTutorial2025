@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-weight: bold;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #08769B;
+}
+
+.js-name-input {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px; /* Added padding for consistency */
+    border: 1px solid #ccc; /* Added border for consistency */
+    border-radius: 4px; /* Added border radius for consistency */
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 200px 150px 200px;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center; /* Align items vertically in the grid */
+}
+
+.js-add-todo-button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; /* Make the button fill the grid cell */
+    margin-top: 0; /* Remove margin-top to align properly */
+    text-align: center; /* Center the text inside the button */
+}
+
+.js-add-todo-button:hover {
+    background-color: #218838;
+}
+
+.js-todo-list {
+    margin-top: 20px;
+}
+
+.todo-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between; /* Space out the content and delete button */
+    align-items: center; /* Align items vertically */
+}
+
+.todo-item p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+
+.todo-item button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.todo-item button:hover {
+    background-color: #c82333;
+}
+
+.input-group input[type="time"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+} 

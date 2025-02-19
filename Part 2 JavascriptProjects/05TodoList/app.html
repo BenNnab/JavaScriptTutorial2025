@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>ToDo List App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="input-group">
+            <input type="text" class="js-name-input" placeholder="Add a to-do item" aria-label="To-do item">
+            <input type="date" class="js-date-input" aria-label="Due date">
+            <input type="time" class="js-time-input" aria-label="Due time"> <!-- Updated to time-only input -->
+            <button class="js-add-todo-button">Add</button>
+        </div>
+       
+        <div class="js-todo-list"></div>
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
